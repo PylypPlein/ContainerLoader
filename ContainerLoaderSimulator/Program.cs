@@ -102,19 +102,19 @@ public class Program
        if (type == 1)
        {
         liquidContainersList.ShowContainersList();
-        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        Console.WriteLine("Wskaz numer kontenera który chcesz rozladować: ");
         index = Convert.ToInt32(Console.ReadLine());
         liquidContainersList.Unload(index);
        }else if (choose == 2)
        {
         gasContainersList.ShowContainersList();
-        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        Console.WriteLine("Wskaz numer kontenera który chcesz rozladować: ");
         index = Convert.ToInt32(Console.ReadLine());
         gasContainersList.Unload(index);
        }else if (choose == 3)
        {
         productContainersList.ShowContainersList();
-        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        Console.WriteLine("Wskaz numer kontenera który chcesz rozladować: ");
         index = Convert.ToInt32(Console.ReadLine());
         productContainersList.Unload(index);
        }

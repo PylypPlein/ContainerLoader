@@ -64,7 +64,6 @@ public class ContainerList
             try
             {
                 containers[containerIndex].Unload();
-                Console.WriteLine($"Pomyślnie rozładowano {containers[containerIndex].GetContainerNumber()}");
             }
             catch (OverfillException ex)
             {
