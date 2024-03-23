@@ -1,6 +1,6 @@
 ﻿namespace ContainerLoaderSimulator;
 
-public interface HazardNotifier
+public interface IHazardNotifier
 {
     void NotifyDanger(string containerNumber);
 }

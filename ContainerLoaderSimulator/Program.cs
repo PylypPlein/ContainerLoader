@@ -4,13 +4,16 @@
  * @author s24675
  */
 
+using ContainerLoaderSimulator;
+
 public class Program
 {
  public static void Main(String[] args)
  {
   int choose;
-  do
-  {
+  int containeChoose;
+  double maxWeight;
+  do{
    ShowMainMenu();
    choose = Convert.ToInt32(Console.ReadLine());
    if (choose == 0)
@@ -44,6 +47,26 @@ public class Program
      switch (choose)
      {
       case 1:
+       Console.WriteLine("Czy kontener ma zawierac niebezpieczny ladunek?");
+       containeChoose = Convert.ToInt32(Console.ReadLine());
+       Console.WriteLine("Podaj maksymalna ladownosc kontenera");
+       maxWeight = Convert.ToDouble(Console.ReadLine());
+       LiquidContainer container = new LiquidContainer(maxWeight, containeChoose == 1 ? true : false);
+       Console.WriteLine("Podaj ladunek");
+       double load = Convert.ToDouble(Console.ReadLine());
+       try
+       {
+        container.Load(load);
+       }
+       catch (OverfillException ex)
+       {
+        Console.WriteLine($"Error: {ex.Message}");
+       }
+       catch (HazardousOperationException ex)
+       {
+        Console.WriteLine($"Error: {ex.Message}");
+       }
+       
        break;
       case 2:
        break;

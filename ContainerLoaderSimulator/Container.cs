@@ -1,6 +1,6 @@
 ﻿namespace ContainerLoaderSimulator;
 
-public abstract class Container : HazardNotifier
+public abstract class Container : IHazardNotifier
 {
     protected string containerNumber;
     protected double maxLoad;
@@ -21,7 +21,7 @@ public abstract class Container : HazardNotifier
 
     public void NotifyDanger(string containerNumber)
     {
-        Console.WriteLine("Dangerous detected in container "+ containerNumber);
+        Console.WriteLine("Niebezpieczenstwo zidentyfikowano w kontenerze "+ containerNumber);
     }
 
     public abstract void Load(double cargoWeight);
