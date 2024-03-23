@@ -5,6 +5,7 @@ public abstract class Container : IHazardNotifier
     protected string containerNumber;
     protected double maxLoad;
     protected double currentLoad;
+    protected string contentName;
     protected int height;
     protected int depth;
 

@@ -12,7 +12,12 @@ public class LiquidContainer : Container
 
     public override void Load(double cargoWeight)
     {
-        
+        Console.WriteLine("Podaj nazwe zawartosci");
+        if (contentName == null)
+        {
+            contentName = Convert.ToString(Console.ReadLine());
+        }
+
         if (cargoWeight > maxLoad)
             throw new OverfillException("Waga ładunku nie może przekroczyć maksymalnej wagi: " + maxLoad);
 
@@ -28,7 +33,7 @@ public class LiquidContainer : Container
         }
 
         currentLoad += cargoWeight;
-        Console.WriteLine("Zaladowano " + cargoWeight + " do kontenera "+ GetContainerNumber());
+        Console.WriteLine("Zaladowano " + cargoWeight +"l "+ contentName + " do kontenera "+ GetContainerNumber());
     }
     public override void Unload()
     {   
