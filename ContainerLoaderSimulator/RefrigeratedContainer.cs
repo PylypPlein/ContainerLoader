@@ -20,7 +20,6 @@ public class RefrigeratedContainer : Container, IHazardNotifier
 
     public RefrigeratedContainer(double maxLoad, string productsName) : base(maxLoad)
     {
-        
         this.productsName = productsName;
     }
 
@@ -34,8 +33,13 @@ public class RefrigeratedContainer : Container, IHazardNotifier
 
     public override void Unload()
     {
-        currentLoad -= currentLoad;
-        
+        if (currentLoad > 0)
+        {
+            currentLoad -= currentLoad;
+        }else
+        {
+            Console.WriteLine("Brak ładunku w kontenerze " + GetContainerNumber());
+        }
     }
 
     private void SetTemperature(double temperature)

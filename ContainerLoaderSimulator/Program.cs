@@ -14,6 +14,8 @@ public class Program
  public static void Main(String[] args)
  {
   int choose;
+  int index;
+  int type;
   do{
    ShowMainMenu();
    choose = Convert.ToInt32(Console.ReadLine());
@@ -42,7 +44,6 @@ public class Program
      }
      break;
     case 2:
-     //baza kontenerów
      ShowCargosMenu();
      choose = Convert.ToInt32(Console.ReadLine());
      switch (choose)
@@ -69,27 +70,54 @@ public class Program
        Console.WriteLine("1 - plyny");
        Console.WriteLine("2 - gazy");
        Console.WriteLine("3 - produkty");
-       choose = Convert.ToInt32(Console.ReadLine());
-       if (choose == 1)
+       
+       type = Convert.ToInt32(Console.ReadLine());
+       if (type == 1)
        {
         liquidContainersList.ShowContainersList();
         Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        index = Convert.ToInt32(Console.ReadLine());
+        liquidContainersList.Load(index);
        }else if (choose == 2)
        {
         gasContainersList.ShowContainersList();
         Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
-        
+        index = Convert.ToInt32(Console.ReadLine());
+        gasContainersList.Load(index);
        }else if (choose == 3)
        {
         productContainersList.ShowContainersList();
         Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
-        
+        index = Convert.ToInt32(Console.ReadLine());
+        productContainersList.Load(index);
        }
        break;
       case 3:
-       showContainers();
-       choose = Convert.ToInt32(Console.ReadLine());
        Console.WriteLine("Wybierz typ kontenera ktory chcesz rozladować");
+       Console.WriteLine("1 - plyny");
+       Console.WriteLine("2 - gazy");
+       Console.WriteLine("3 - produkty");
+       
+       type = Convert.ToInt32(Console.ReadLine());
+       if (type == 1)
+       {
+        liquidContainersList.ShowContainersList();
+        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        index = Convert.ToInt32(Console.ReadLine());
+        liquidContainersList.Unload(index);
+       }else if (choose == 2)
+       {
+        gasContainersList.ShowContainersList();
+        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        index = Convert.ToInt32(Console.ReadLine());
+        gasContainersList.Unload(index);
+       }else if (choose == 3)
+       {
+        productContainersList.ShowContainersList();
+        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        index = Convert.ToInt32(Console.ReadLine());
+        productContainersList.Unload(index);
+       }
        break;
       case 4:
        showContainers();

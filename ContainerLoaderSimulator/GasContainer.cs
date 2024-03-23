@@ -22,7 +22,14 @@ public class GasContainer : Container
 
     public override void Unload()
     {
-        double remainingLoad = currentLoad * 0.05;
-        currentLoad -= currentLoad + remainingLoad;
+        if (currentLoad > 0)
+        {
+            double remainingLoad = currentLoad * 0.05;
+            currentLoad -= currentLoad + remainingLoad;
+        }
+        else
+        {
+            Console.WriteLine("Brak ładunku w kontenerze " + GetContainerNumber());
+        }
     }
 }

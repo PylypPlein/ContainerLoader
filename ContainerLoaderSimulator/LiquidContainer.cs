@@ -36,9 +36,15 @@ public class LiquidContainer : Container
         Console.WriteLine("Zaladowano " + cargoWeight +"l "+ contentName + " do kontenera "+ GetContainerNumber());
     }
     public override void Unload()
-    {   
-        currentLoad -= currentLoad;
-        Console.WriteLine("Rozladowano kontener " + GetContainerNumber());
+    {
+        if (currentLoad > 0)
+        {
+            currentLoad -= currentLoad;
+            Console.WriteLine("Rozladowano kontener " + GetContainerNumber());
+        }else
+        {
+            Console.WriteLine("Brak ładunku w kontenerze " + GetContainerNumber());
+        }
     }
     
 }

@@ -30,5 +30,54 @@ public class ContainerList
         }
     }
 
-    
+    public void Load(int containerIndex)
+    {
+        containerIndex = containerIndex - 1;
+        if (containerIndex >= 0 && containerIndex < containers.Count)
+        {
+            try
+            {
+                Console.WriteLine("Podaj wagę ładunku dla " + containers[containerIndex].GetContainerNumber());
+                double weight = Convert.ToDouble(Console.ReadLine());
+                containers[containerIndex].Load(weight);
+                Console.WriteLine($"Ładunek załadowany do kontenera {containers[containerIndex].GetContainerNumber()} pomyślnie.");
+            }
+            catch (OverfillException ex)
+            {
+                Console.WriteLine($"Błąd: {ex.Message}");
+            }
+            catch (HazardousOperationException ex)
+            {
+                Console.WriteLine($"Błąd: {ex.Message}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Nieprawidłowy indeks kontenera.");
+        }
+    }
+    public void Unload(int containerIndex)
+    {
+        containerIndex = containerIndex - 1;
+        if (containerIndex >= 0 && containerIndex < containers.Count)
+        {
+            try
+            {
+                containers[containerIndex].Unload();
+                Console.WriteLine($"Pomyślnie rozładowano {containers[containerIndex].GetContainerNumber()}");
+            }
+            catch (OverfillException ex)
+            {
+                Console.WriteLine($"Błąd: {ex.Message}");
+            }
+            catch (HazardousOperationException ex)
+            {
+                Console.WriteLine($"Błąd: {ex.Message}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Nieprawidłowy indeks kontenera.");
+        }
+    }
 }
