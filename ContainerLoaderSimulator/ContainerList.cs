@@ -79,4 +79,8 @@ public class ContainerList
             Console.WriteLine("Nieprawidłowy indeks kontenera.");
         }
     }
+    public List<Container> GetContainersList()
+    {
+        return containers;
+    }
 }

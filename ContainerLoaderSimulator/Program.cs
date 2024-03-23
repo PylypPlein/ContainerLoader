@@ -11,6 +11,7 @@ public class Program
  static ContainerList liquidContainersList = new ContainerList();
  static ContainerList gasContainersList = new ContainerList();
  static ContainerList productContainersList = new ContainerList();
+ private static ShipList ships = new ShipList();
  public static void Main(String[] args)
  {
   int choose;
@@ -32,12 +33,21 @@ public class Program
      switch (choose)
      {
       case 1:
+       Console.WriteLine("podaj nazwę statku: ");
+       string name = Convert.ToString(Console.ReadLine());
+       Console.WriteLine("podaj maksymalną predkośc: ");
+       int maxSpeed = Convert.ToInt32(Console.ReadLine());
+       Console.WriteLine("podaj maksymalną wagę: ");
+       int maxWeight = Convert.ToInt32(Console.ReadLine());
+       Ship ship = new Ship(name, maxSpeed, maxWeight);
+       ships.AddShip(ship);
        break;
       case 2:
        break;
       case 3:
        break;
       case 4:
+       ships.ShowShipsList();
        break;
       default:
        break;

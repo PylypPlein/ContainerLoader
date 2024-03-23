@@ -29,8 +29,23 @@ public class Ship
         }
     }
 
-    public void GetWeight()
+    public double GetWeight()
     {
-        
+        return weight;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public double GetMaxWeight()
+    {
+        return maxWeight;
+    }
+
+    public int GetMaxSpeed()
+    {
+        return maxSpeed;
     }
 }
