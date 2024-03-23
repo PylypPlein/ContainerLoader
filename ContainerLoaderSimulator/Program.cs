@@ -8,11 +8,12 @@ using ContainerLoaderSimulator;
 
 public class Program
 {
+ static ContainerList liquidContainersList = new ContainerList();
+ static ContainerList gasContainersList = new ContainerList();
+ static ContainerList productContainersList = new ContainerList();
  public static void Main(String[] args)
  {
   int choose;
-  int containeChoose;
-  double maxWeight;
   do{
    ShowMainMenu();
    choose = Convert.ToInt32(Console.ReadLine());
@@ -47,32 +48,51 @@ public class Program
      switch (choose)
      {
       case 1:
-       Console.WriteLine("Czy kontener ma zawierac niebezpieczny ladunek?");
-       containeChoose = Convert.ToInt32(Console.ReadLine());
-       Console.WriteLine("Podaj maksymalna ladownosc kontenera");
-       maxWeight = Convert.ToDouble(Console.ReadLine());
-       LiquidContainer container = new LiquidContainer(maxWeight, containeChoose == 1 ? true : false);
-       Console.WriteLine("Podaj ladunek");
-       double load = Convert.ToDouble(Console.ReadLine());
-       try
+       Console.WriteLine("1 - stworz kontener na Plyny");
+       Console.WriteLine("2 - stworz kontener na Gaz");
+       Console.WriteLine("3 - stworz kontener na Produkty");
+       Console.WriteLine("4 - cofnij");
+       choose = Convert.ToInt32(Console.ReadLine());
+       if (choose == 1)
        {
-        container.Load(load);
-       }
-       catch (OverfillException ex)
+        CreateLiquidContainer();
+       }else if (choose == 2)
        {
-        Console.WriteLine($"Error: {ex.Message}");
-       }
-       catch (HazardousOperationException ex)
+        CreateGasContainer();
+       }else if (choose == 3)
        {
-        Console.WriteLine($"Error: {ex.Message}");
+        CreateRefrigeratedContainer();
        }
-       
        break;
       case 2:
+       Console.WriteLine("Wybierz typ kontenera ktory chcesz zaladować");
+       Console.WriteLine("1 - plyny");
+       Console.WriteLine("2 - gazy");
+       Console.WriteLine("3 - produkty");
+       choose = Convert.ToInt32(Console.ReadLine());
+       if (choose == 1)
+       {
+        liquidContainersList.ShowContainersList();
+        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+       }else if (choose == 2)
+       {
+        gasContainersList.ShowContainersList();
+        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        
+       }else if (choose == 3)
+       {
+        productContainersList.ShowContainersList();
+        Console.WriteLine("Wskaz numer kontenera który chcesz zaladować: ");
+        
+       }
        break;
       case 3:
+       showContainers();
+       choose = Convert.ToInt32(Console.ReadLine());
+       Console.WriteLine("Wybierz typ kontenera ktory chcesz rozladować");
        break;
       case 4:
+       showContainers();
        break;
       default:
        break;
@@ -109,12 +129,51 @@ public class Program
  {
   Console.WriteLine("1 - stwórz kontener");
   Console.WriteLine("2 - zaladuj kontener");
-  Console.WriteLine("3 - lista kontenerów");
-  Console.WriteLine("4 - cofnij");
+  Console.WriteLine("3 - rozladuj kontener");
+  Console.WriteLine("4 - lista kontenerów");
+  Console.WriteLine("5 - cofnij");
  }
 
  private static void ExitMessage()
  {
   Console.WriteLine("Do widzenia!");
+ }
+
+ private static void CreateLiquidContainer()
+ {
+  Console.WriteLine("Czy kontener ma zawierac niebezpieczny ladunek?");
+  int containeChoose = Convert.ToInt32(Console.ReadLine());
+  Console.WriteLine("Podaj maksymalna ladownosc kontenera");
+  double maxWeight = Convert.ToDouble(Console.ReadLine());
+  LiquidContainer container = new LiquidContainer(maxWeight, containeChoose == 1 ? true : false);
+  liquidContainersList.AddContainer(container);
+ }
+ private static void CreateGasContainer()
+ {
+  Console.WriteLine("Podaj cisnienie kontenera");
+  int pressure = Convert.ToInt32(Console.ReadLine());
+  Console.WriteLine("Podaj maksymalna ladownosc kontenera");
+  double maxWeight = Convert.ToDouble(Console.ReadLine());
+  GasContainer container = new GasContainer(maxWeight, pressure);
+  gasContainersList.AddContainer(container);
+ }
+ private static void CreateRefrigeratedContainer()
+ {
+  Console.WriteLine("Podaj typ zawartosci kontenera");
+  string productType = Convert.ToString(Console.ReadLine());
+  Console.WriteLine("Podaj maksymalna ladownosc kontenera");
+  double maxWeight = Convert.ToDouble(Console.ReadLine());
+  RefrigeratedContainer container = new RefrigeratedContainer(maxWeight, productType);
+  productContainersList.AddContainer(container);
+ }
+
+ private static void showContainers()
+ {
+  Console.WriteLine("Plyny");
+  liquidContainersList.ShowContainersList();
+  Console.WriteLine("Gazy");
+  gasContainersList.ShowContainersList();
+  Console.WriteLine("Produkty");
+  productContainersList.ShowContainersList();
  }
 }
