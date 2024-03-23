@@ -45,9 +45,9 @@ public class Program
       case 2:
        break;
       case 3:
+       ships.ShowShipsList();
        break;
       case 4:
-       ships.ShowShipsList();
        break;
       default:
        break;
