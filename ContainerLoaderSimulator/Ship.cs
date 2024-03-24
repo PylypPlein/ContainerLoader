@@ -12,7 +12,7 @@ public class Ship
     {
         this.name = name;
         this.maxSpeed = maxSpeed;
-        this.maxWeight = this.maxWeight;
+        this.maxWeight = maxWeight;
     }
 
     public void LoadContainerOnShip(Container container)

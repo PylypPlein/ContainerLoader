@@ -29,5 +29,26 @@ public class ShipList
             Console.WriteLine("* Brak statków");
         }
     }
+
+    public Ship GetShipOnIndex(int shipIndex)
+    {
+        shipIndex -= 1;
+        if (shipIndex >= 0 && shipIndex < ships.Count)
+        {
+            return ships[shipIndex];
+        }
+        else
+        {
+
+            Console.WriteLine("Nieprawidłowy indeks statku.");
+            return null;
+        }
+    }
+
+    public void UpdateShipData(Ship ship, int shipIndex)
+    {
+        shipIndex -= 1;
+        ships[shipIndex] = ship;
+    }
     
 }

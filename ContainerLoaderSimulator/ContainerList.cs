@@ -83,4 +83,18 @@ public class ContainerList
     {
         return containers;
     }
+
+    public Container GetContainerOnIndex(int containerIndex)
+    {
+        containerIndex -= 1;
+        if (containerIndex >= 0 && containerIndex < containers.Count)
+        {
+            return containers[containerIndex];
+        }
+        else
+        {
+            Console.WriteLine("Nieprawidłowy indeks kontenera.");
+            return null;
+        }
+    }
 }

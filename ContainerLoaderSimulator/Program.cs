@@ -43,6 +43,7 @@ public class Program
        ships.AddShip(ship);
        break;
       case 2:
+       LoadContainerOnShip();
        break;
       case 3:
        ships.ShowShipsList();
@@ -213,5 +214,54 @@ public class Program
   gasContainersList.ShowContainersList();
   Console.WriteLine("Produkty");
   productContainersList.ShowContainersList();
+ }
+
+ private static void LoadContainerOnShip()
+ {
+  ships.ShowShipsList();
+  Console.WriteLine("Wskaż numer statku na który chcesz załadować kontener");
+  int shipIndex = Convert.ToInt32(Console.ReadLine());
+  Ship ship = ships.GetShipOnIndex(shipIndex);
+  int index;
+  Console.WriteLine("Wskaż typ kontenera który chcesz zaladować na statek");
+  Console.WriteLine("1 - plyny");
+  Console.WriteLine("2 - gazy");
+  Console.WriteLine("3 - produkty");
+  int type = Convert.ToInt32(Console.ReadLine());
+  
+  Container container;
+  if (type == 1)
+  {
+   liquidContainersList.ShowContainersList();
+   Console.WriteLine("Wybierz kontener który chcesz załadować na statek");
+   index = Convert.ToInt32(Console.ReadLine());
+   container = liquidContainersList.GetContainerOnIndex(index);
+   ship.LoadContainerOnShip(container);
+   ships.UpdateShipData(ship,shipIndex);
+  }else if (type == 2)
+  {
+   gasContainersList.ShowContainersList();
+   Console.WriteLine("Wybierz kontener który chcesz załadować na statek");
+   index = Convert.ToInt32(Console.ReadLine());
+   container = gasContainersList.GetContainerOnIndex(index);
+   try
+   {
+    ship.LoadContainerOnShip(container);
+    ships.UpdateShipData(ship,shipIndex);
+   }
+   catch (Exception e)
+   {
+    
+   }
+   
+  }else if (type == 3)
+  {
+   productContainersList.ShowContainersList();
+   Console.WriteLine("Wybierz kontener który chcesz załadować na statek");
+   index = Convert.ToInt32(Console.ReadLine());
+   container = productContainersList.GetContainerOnIndex(index);
+   ship.LoadContainerOnShip(container);
+   ships.UpdateShipData(ship,shipIndex);
+  }
  }
 }
