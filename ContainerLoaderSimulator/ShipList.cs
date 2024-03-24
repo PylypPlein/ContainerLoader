@@ -48,7 +48,34 @@ public class ShipList
     public void UpdateShipData(Container container, int shipIndex)
     {
         shipIndex -= 1;
-        ships[shipIndex].LoadContainerOnShip(container);
+        try
+        {
+            if (shipIndex >= 0 && shipIndex < ships.Count)
+            {
+                Ship ship = ships[shipIndex];
+            
+                if (ship != null)
+                {
+                    ship.LoadContainerOnShip(container);
+                }
+                else
+                {
+                    Console.WriteLine("Błąd , ship ISNULL.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Błąd , zły indeks statku.");
+            }
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Null reference exception occurred: " + ex.Message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An unexpected exception occurred: " + ex.Message);
+        }
     }
     
 }

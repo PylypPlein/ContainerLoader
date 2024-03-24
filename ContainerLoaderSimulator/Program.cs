@@ -180,7 +180,7 @@ public class Program
 
  private static void CreateLiquidContainer()
  {
-  Console.WriteLine("Czy kontener ma zawierac niebezpieczny ladunek?");
+  Console.WriteLine("Czy kontener ma zawierac niebezpieczny ladunek?\n1-tak\n2-nie");
   int containeChoose = Convert.ToInt32(Console.ReadLine());
   Console.WriteLine("Podaj maksymalna ladownosc kontenera");
   double maxWeight = Convert.ToDouble(Console.ReadLine());
@@ -221,7 +221,6 @@ public class Program
   ships.ShowShipsList();
   Console.WriteLine("Wskaż numer statku na który chcesz załadować kontener");
   int shipIndex = Convert.ToInt32(Console.ReadLine());
-  Ship ship = ships.GetShipOnIndex(shipIndex);
   int index;
   Console.WriteLine("Wskaż typ kontenera który chcesz zaladować na statek");
   Console.WriteLine("1 - plyny");
@@ -244,8 +243,6 @@ public class Program
    index = Convert.ToInt32(Console.ReadLine());
    container = gasContainersList.GetContainerOnIndex(index);
    ships.UpdateShipData(container,shipIndex);
-   
-   
   }else if (type == 3)
   {
    productContainersList.ShowContainersList();

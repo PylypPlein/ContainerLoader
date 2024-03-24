@@ -93,8 +93,9 @@ public class ContainerList
         }
         else
         {
-            Console.WriteLine("Nieprawidłowy indeks kontenera.");
-            return null;
+            Console.WriteLine("Nieprawidłowy indeks kontenera.\nPodaj poprawny numer kontenera");
+            containerIndex = Convert.ToInt32(Console.ReadLine());
+            return GetContainerOnIndex(containerIndex);
         }
     }
 }
