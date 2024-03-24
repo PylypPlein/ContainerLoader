@@ -45,10 +45,10 @@ public class ShipList
         }
     }
 
-    public void UpdateShipData(Ship ship, int shipIndex)
+    public void UpdateShipData(Container container, int shipIndex)
     {
         shipIndex -= 1;
-        ships[shipIndex] = ship;
+        ships[shipIndex].LoadContainerOnShip(container);
     }
     
 }

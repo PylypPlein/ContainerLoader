@@ -236,23 +236,15 @@ public class Program
    Console.WriteLine("Wybierz kontener który chcesz załadować na statek");
    index = Convert.ToInt32(Console.ReadLine());
    container = liquidContainersList.GetContainerOnIndex(index);
-   ship.LoadContainerOnShip(container);
-   ships.UpdateShipData(ship,shipIndex);
+   ships.UpdateShipData(container,shipIndex);
   }else if (type == 2)
   {
    gasContainersList.ShowContainersList();
    Console.WriteLine("Wybierz kontener który chcesz załadować na statek");
    index = Convert.ToInt32(Console.ReadLine());
    container = gasContainersList.GetContainerOnIndex(index);
-   try
-   {
-    ship.LoadContainerOnShip(container);
-    ships.UpdateShipData(ship,shipIndex);
-   }
-   catch (Exception e)
-   {
-    
-   }
+   ships.UpdateShipData(container,shipIndex);
+   
    
   }else if (type == 3)
   {
@@ -260,8 +252,7 @@ public class Program
    Console.WriteLine("Wybierz kontener który chcesz załadować na statek");
    index = Convert.ToInt32(Console.ReadLine());
    container = productContainersList.GetContainerOnIndex(index);
-   ship.LoadContainerOnShip(container);
-   ships.UpdateShipData(ship,shipIndex);
+   ships.UpdateShipData(container,shipIndex);
   }
  }
 }
